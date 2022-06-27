@@ -10,3 +10,15 @@ pool:
  name: VM-BSB
 
 steps:
+- task: FortifyScanCentralSAST@7
+  inputs:
+    scanCentralCtrlUrl: '$(ScanCentralURL)'
+    scanCentralClientToken: '$(ScanCentral.ClientToken)'
+    sscUrl: '$(SSC_URL)'
+    sscCiToken: '$(ScanCentral.SscCiToken)'
+    uploadToSSC: true
+    applicationName: '$(SSC_PROJECTNAME)'
+    applicationVersion: '$(SSC_PROJECTVERSION)'
+    buildTool: 'mvn'
+    buildCommand: 'clean'
+    buildFile: 'pom.xml'
